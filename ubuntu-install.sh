@@ -138,7 +138,6 @@ bash -c "$(curl --fail --show-error --silent --location https://raw.githubuserco
 # check install success
 if [ $? -eq 0 ]; then
     echo -e "\nZinit installation completed successfully!\n"
-    echo "# Plugs zinit" >> ~/.zshrc
     echo "zinit light zdharma/fast-syntax-highlighting" >> ~/.zshrc
     echo "zinit light zsh-users/zsh-autosuggestions" >> ~/.zshrc
     echo "zinit light zsh-users/zsh-completions" >> ~/.zshrc
