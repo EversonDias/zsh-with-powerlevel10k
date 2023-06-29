@@ -108,9 +108,9 @@ sudo apt-get install bat -y
 
 # check install success
 if [ $? -eq 0 ]; then
-    echo "\nBat installation completed successfully!\n"
+    echo -e "\nBat installation completed successfully!\n"
 else
-    echo "\nBat installation failed\n"
+    echo -e "\nBat installation failed\n"
 fi
 
 # Install exa
@@ -126,14 +126,14 @@ if [ $? -eq 0 ]; then
     echo 'alias l="exa -l --icons"' >> ~/.zshrc
     echo "use L instead of LS"
 else
-    echo "\nExa installation failed\n"
+    echo -e "\nExa installation failed\n"
 fi
 
 # Install zinit
 echo -e "\n#################################################"
 echo -e "\nInstalling zinit...\n"
 echo -e "##################################################\n"
-bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 
 # check install success
 if [ $? -eq 0 ]; then
