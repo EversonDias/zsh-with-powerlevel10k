@@ -118,7 +118,7 @@ or
 
 ### [GitHub powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-# 3° shell-commands-rust
+# 3° Commands Line Tools
 
 ### exa
 `exa` is a modern replacement for `ls`, the default command-line program in Unix/Linux for listing directory contents. `exa` supports icons with the `--icons` flag.
