@@ -20,13 +20,12 @@ sudo apt install zsh -y
 # verify installation success
 if [ $? -eq 0 ]; then
     echo "Zsh installation completed successfully!"
+    # set zsh as the default shell
+    chsh -s $(which zsh)
 else
     echo "Zsh installation failed"
     exit 1
 fi
-
-# set zsh as the default shell
-chsh -s $(which zsh)
 
 # install powerlevel10k
 echo "Installing powerlevel10k..."
