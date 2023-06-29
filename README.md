@@ -1,9 +1,11 @@
-# zsh-with-powerlevel10k
+# zsh-with-powerlevel10k-zinit
 
 zsh shell install script with powerlevel10k and zinit, shell-commands-rust.
+this script was made for debian and derivatives, for other systems I recommend making a clone and modifying the ubuntu-script accordingly.
 
 # index
 
+- [Script installation](#5°-script-installation)
 - [ZSH](#1°-install-zsh-shell)
 - [Powerlevel10k](#2°-install-powerlevel10k)
 - [Shell Commands Rust](#3°-shell-commands-rust)
@@ -11,7 +13,7 @@ zsh shell install script with powerlevel10k and zinit, shell-commands-rust.
 
 # 1° install zsh shell
 
-commands fro ubunto and derivations
+commands for debian and derivatives
 
 ```shell
 sudo apt install zsh
@@ -190,7 +192,7 @@ or
 
 ### [GitHube zinit](https://github.com/zdharma-continuum/zinit)
 
-# 5° Script
+# 5° Script installation
 
 ```zsh
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/EversonDias/zsh-with-powerlevel10k/main/ubuntu-install.sh)"
