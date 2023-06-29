@@ -193,14 +193,5 @@ or
 # 5° Script
 
 ```zsh
-git clone --depth=1 https://github.com/EversonDias/zsh-with-powerlevel10k.git
-```
-```zsh
-cd zsh-with-powerlevel10k
-```
-```zsh
-chmod +x install.sh
-```
-```zsh
-./install.sh
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/EversonDias/zsh-with-powerlevel10k/main/ubuntu-install.sh)"
 ```
