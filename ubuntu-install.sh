@@ -23,6 +23,8 @@ sudo apt install zsh -y
 
 # verify installation success
 if [ $? -eq 0 ]; then
+    echo "typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet" >> ~/.zshrc
+    echo "typeset -g POWERLEVEL9K_INSTANT_PROMPT=off" >> ~/.zshrc
     echo -e "\nZsh installation completed successfully!\n"
     # set zsh as the default shell
     chsh -s $(which zsh)
