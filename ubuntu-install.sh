@@ -2,28 +2,28 @@
 # this script is for Ubuntu and derivations, customize for your system
 
 # update system
-echo "\n #################################################"
-echo "\n Updating system... \n"
-echo "################################################## \n"
+echo "\n#################################################"
+echo "\nUpdating system...\n"
+echo "##################################################\n"
 sudo apt-get update -y && sudo apt-get upgrade -y
 
 # check if system update was successful
 if [ $? -eq 0 ]; then
-    echo "\n System update completed successfully! \n"
+    echo "\nSystem update completed successfully!\n"
 else
-    echo "\n System update failed \n"
+    echo "\nSystem update failed\n"
     exit 1
 fi
 
 # install zsh
-echo "\n #################################################"
-echo "\n Installing zsh... \n"
-echo "################################################## \n"
+echo "\n#################################################"
+echo "\nInstalling zsh...\n"
+echo "##################################################\n"
 sudo apt install zsh -y
 
 # verify installation success
 if [ $? -eq 0 ]; then
-    echo "\n Zsh installation completed successfully! \n"
+    echo "\nZsh installation completed successfully!\n"
     # set zsh as the default shell
     chsh -s $(which zsh)
 else
@@ -32,34 +32,34 @@ else
 fi
 
 # install powerlevel10k
-echo "\n #################################################"
-echo "\n Installing powerlevel10k... \n"
-echo "################################################## \n"
+echo "\n#################################################"
+echo "\nInstalling powerlevel10k...\n"
+echo "##################################################\n"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 
 # check clone success
 if [ $? -eq 0 ]; then
-    echo "\n Successfully cloned powerlevel10k repository \n"
+    echo "\nSuccessfully cloned powerlevel10k repository\n"
     
     # update .zshrc file
     echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
     
     # check .zshrc update success
     if [ $? -eq 0 ]; then
-        echo "\n .zshrc file update was successful \n"
-        echo "\n Powerlevel10k installation completed successfully! \n"
+        echo "\n.zshrc file update was successful\n"
+        echo "\nPowerlevel10k installation completed successfully!\n"
     else
-        echo "\n Failed to update .zshrc file \n"
+        echo "\nFailed to update .zshrc file\n"
         exit 1
     fi
 else
-    echo "\n Powerlevel10k installation failed \n"
+    echo "\nPowerlevel10k installation failed\n"
     exit 1
 fi
 
-echo "\n #################################################"
-echo "\n install fonts \n"
-echo "################################################## \n"
+echo "\n#################################################"
+echo "\ninstall fonts\n"
+echo "##################################################\n"
 # URLs of fonts
 font_urls=(
   "https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf"
@@ -81,10 +81,10 @@ for font_url in "${font_urls[@]}"; do
 
   # Check if download was successful
   if [ $? -eq 0 ]; then
-    echo "\n The font '$font_filename' was successfully downloaded. \n"
+    echo "\nThe font '$font_filename' was successfully downloaded.\n"
   else
-    echo "\n Failed to download the font '$font_filename'. \n"
-    echo "\n Please try downloading it manually. \n"
+    echo "\nFailed to download the font '$font_filename'.\n"
+    echo "\nPlease try downloading it manually.\n"
     continue
   fi
 
@@ -93,57 +93,57 @@ for font_url in "${font_urls[@]}"; do
 
   # Check if font was installed correctly
   if fc-list | grep -q "$font_filename"; then
-    echo "\n The font '$font_filename' was installed successfully. \n"
+    echo "\nThe font '$font_filename' was installed successfully.\n"
   else
-    echo "\n Installation of the font '$font_filename' failed. \n"
-    echo "\n Please try installing it manually. \n"
+    echo "\nInstallation of the font '$font_filename' failed.\n"
+    echo "\nPlease try installing it manually.\n"
   fi
 done
 
 # Install bat
-echo "\n #################################################"
-echo "\n Installing bat... \n"
-echo "################################################## \n"
+echo "\n#################################################"
+echo "\nInstalling bat...\n"
+echo "##################################################\n"
 sudo apt-get install bat -y
 
 # check install success
 if [ $? -eq 0 ]; then
-    echo "\n Bat installation completed successfully! \n"
+    echo "\nBat installation completed successfully!\n"
 else
-    echo "\n Bat installation failed \n"
+    echo "\nBat installation failed\n"
 fi
 
 # Install exa
-echo "\n #################################################"
-echo "\n Installing exa... \n"
-echo "################################################## \n"
+echo "\n#################################################"
+echo "\nInstalling exa...\n"
+echo "##################################################\n"
 sudo apt-get install exa -y
 
 # check install success
 if [ $? -eq 0 ]; then
-    echo "\n Exa installation completed successfully! \n"
+    echo "\nExa installation completed successfully!\n"
     echo "# Alias shell-commands-rus" >> ~/.zshrc
     echo 'alias l="exa -l --icons"' >> ~/.zshrc
     echo "use L instead of LS"
 else
-    echo "\n Exa installation failed \n"
+    echo "\nExa installation failed\n"
 fi
 
 # Install zinit
-echo "\n #################################################"
-echo "\n Installing zinit... \n"
-echo "################################################## \n"
+echo "\n#################################################"
+echo "\nInstalling zinit...\n"
+echo "##################################################\n"
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
 
 # check install success
 if [ $? -eq 0 ]; then
-    echo "\n Zinit installation completed successfully! \n"
+    echo "\nZinit installation completed successfully!\n"
     echo "# Plugs zinit" >> ~/.zshrc
     echo "zinit light zdharma/fast-syntax-highlighting" >> ~/.zshrc
     echo "zinit light zsh-users/zsh-autosuggestions" >> ~/.zshrc
     echo "zinit light zsh-users/zsh-completions" >> ~/.zshrc
 else
-    echo "\n Zinit installation failed \n"
+    echo "\nZinit installation failed\n"
 fi
 
-echo "\n Please restart your terminal... \n"
+echo "\nPlease restart your terminal...\n"
