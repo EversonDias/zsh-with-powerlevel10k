@@ -1,21 +1,44 @@
-# ZSH with Powerlevel10k and Zinit
+# ZSH com Powerlevel10k e Zinit
 
 ![shell](/readme/home.png)
 
-zsh shell install script with powerlevel10k and zinit.
-this script was made for debian and derivatives, for other systems I recommend making a clone and modifying the ubuntu-script accordingly.
-
 # index
 
-- [Script installation](#5°-script-installation)
-- [ZSH](#1°-install-zsh-shell)
-- [Powerlevel10k](#2°-install-powerlevel10k)
-- [Shell Commands Rust](#3°-commands-line-tools)
-- [Zinit](#4°-zinit)
+- [installation automatic](#instalação-automática)
+- [installation manual](#instalação-manual)
+  - [ZSH](#1°-instalação-zsh)
+  - [Powerlevel10k](#2°-instalação-powerlevel10k)
+    - [fonts](#instalação-de-fontes)
+  - [Ferramentas shell](#3°-ferramentas-shell)
+  - [Zinit](#4°-zinit)
+- [sobre](#sobre)
 
-# 1° install zsh shell
+# Sobre
 
-commands for debian and derivatives
+🚀 Aumente sua produtividade com um terminal personalizado! 💻✨
+
+Apresento a vocês um script shell incrível que automatiza a instalação de algumas ferramentas essenciais para aprimorar sua experiência no terminal. ✅🔥
+
+🔹 O Zsh é um shell altamente configurável, repleto de recursos e opções de personalização. Com uma sintaxe mais intuitiva e autocompletar inteligente, você ganhará mais agilidade ao digitar comandos e navegar pelos diretórios.
+
+🔹 O Powerlevel10k é um tema para o Zsh que fornece um prompt altamente personalizável e informativo. Com ele, você terá acesso a informações úteis, como o diretório atual, o status do Git, o tempo de execução de um comando e muito mais. Sua interface atraente e funcional o ajudará a obter informações importantes de forma rápida e eficiente.
+
+🔹 O Zinit é um gerenciador de plugins para o Zsh. Com ele, você poderá adicionar facilmente uma infinidade de plugins úteis ao seu shell, como autocompletar aprimorado, realce de sintaxe e suporte a diferentes linguagens de programação. O Zinit torna a instalação e a atualização de plugins um processo simples e intuitivo.
+
+Plugs instalados:
+  - fast-syntax-highlighting
+  - zsh-autosuggestions
+  - zsh-completions
+
+🔹 Foi adicionado um alias para listar diretórios com icons e cores, use `l` no lugar do `ls`
+![example ls](/readme/newls.png)
+
+🔹 Nerd Fonts instaladas para usuário atual, caso tenha mais de um usuário que deseje utilizar as fontes e necessário instalar manualmente
+
+# instalação manual
+## 1° instalação zsh
+
+comando compatível com sistema debian e derivados
 
 ```shell
 sudo apt install zsh
@@ -27,84 +50,18 @@ zsh --version
 chsh -s $(which zsh)
 ```
 
-or 
+ou acesse o repositório oficial [GitHub zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
 
-### [GitHub zsh](https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH)
-
-# 2° install powerlevel10k
-
-### Manual
+## 2° instalação powerlevel10k
 
 ```zsh
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
 echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
 ```
 
-Users in China can use the official mirror on gitee.com for faster download.<br>
-中国用户可以使用 gitee.com 上的官方镜像加速下载.
+### instalação de fontes
 
-```zsh
-git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ~/powerlevel10k
-echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-```
-
-This is the simplest kind of installation and it works even if you are using a plugin manager. Just
-make sure to disable the current theme in your plugin manager. See
-[troubleshooting](#cannot-make-powerlevel10k-work-with-my-plugin-manager) for help.
-
-#### Extra space without background on the right side of right prompt
-
-tl;dr: Add `ZLE_RPROMPT_INDENT=0` to `~/.zshrc` to get rid of that space.
-
-From [Zsh documentation](
-  http://zsh.sourceforge.net/Doc/Release/Parameters.html#index-ZLE_005fRPROMPT_005fINDENT):
-
-> `ZLE_RPROMPT_INDENT <S>`
->
-> If set, used to give the indentation between the right hand side of the right prompt in the line
-> editor as given by `RPS1` or `RPROMPT` and the right hand side of the screen. If not set, the
-> value `1` is used.
->
-> Typically this will be used to set the value to `0` so that the prompt appears flush with the
-> right hand side of the screen.
-
-Powerlevel10k respects this parameter. If you set `ZLE_RPROMPT_INDENT=1` (or leave it unset, which
-is the same thing as setting it to `1`), you'll get an empty space to the right of right prompt. If
-you set `ZLE_RPROMPT_INDENT=0`, your prompt will go to the edge of the terminal. This is how it
-works in every theme except Powerlevel9k.
-
-![ZLE_RPROMPT_INDENT: Powerlevel10k vs Powerlevel9k](
-  https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/p9k-vs-p10k-zle-rprompt-indent.png)
-
-Powerlevel9k issue: [powerlevel9k#1292](https://github.com/Powerlevel9k/powerlevel9k/issues/1292).
-It's been fixed in the development branch of Powerlevel9k but the fix hasn't yet made it to
-`master`.
-
-Add `ZLE_RPROMPT_INDENT=0` to `~/.zshrc` to get the same spacing on the right edge of prompt as in
-Powerlevel9k.
-
-*Note:* Several versions of Zsh have bugs that get triggered when you set `ZLE_RPROMPT_INDENT=0`.
-Powerlevel10k can work around these bugs when using powerline prompt style. If you notice visual
-artifacts in prompt, or wrong cursor position, try removing `ZLE_RPROMPT_INDENT` from `~/.zshrc`.
-
-#### Extra or missing spaces around icons
-
-tl;dr: Add `POWERLEVEL9K_LEGACY_ICON_SPACING=true` to `~/.zshrc` to get the same spacing around
-icons as in Powerlevel9k.
-
-Spacing around icons in Powerlevel9k is inconsistent.
-
-![ZLE_RPROMPT_INDENT: Powerlevel10k vs Powerlevel9k](
-  https://raw.githubusercontent.com/romkatv/powerlevel10k-media/master/p9k-vs-p10k-icon-spacing.png)
-
-This inconsistency is a constant source of annoyance, so it was fixed in Powerlevel10k. You can add
-`POWERLEVEL9K_LEGACY_ICON_SPACING=true` to `~/.zshrc` to get the same spacing around icons as in
-Powerlevel9k.
-
-*Note:* It's not a good idea to define `POWERLEVEL9K_LEGACY_ICON_SPACING` when using
-`p10k configure`.
-
-1. Download these four ttf files:
+1. Baixe estes quatro arquivos ttf:
    - [MesloLGS NF Regular.ttf](
        https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
    - [MesloLGS NF Bold.ttf](
@@ -113,88 +70,31 @@ Powerlevel9k.
        https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf)
    - [MesloLGS NF Bold Italic.ttf](
        https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf)
-1. Double-click on each file and click "Install". This will make `MesloLGS NF` font available to all
-   applications on your system.
+1. Clique duas vezes em cada arquivo e clique em "Instalar". Isso tornará a fonte `MesloLGS NF` disponível para todos aplicativos em seu sistema.
+ou acesse o repositório oficial [GitHub powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
-or
-
-### [GitHub powerlevel10k](https://github.com/romkatv/powerlevel10k)
-
-# 3° Commands Line Tools
+## 3° Ferramentas shell
 
 ### exa
-`exa` is a modern replacement for `ls`, the default command-line program in Unix/Linux for listing directory contents. `exa` supports icons with the `--icons` flag.
+`exa` é um substituto moderno para `ls`, o programa de linha de comando padrão no Unix/Linux para listar o conteúdo do diretório. `exa` suporta ícones com o sinalizador `--icons`.
 
 ![exa](https://user-images.githubusercontent.com/200613/90223612-aa856a00-de0e-11ea-8cec-133becefa6f2.png)
 
 ```shell
 sudo apt-get install exa
 ```
-### [more plugs](https://zaiste.net/posts/shell-commands-rust/)
+### [mais plugs](https://zaiste.net/posts/shell-commands-rust/)
 
-# 4° zinit
+## 4° zinit
 
-## Install<a name="install"></a>
-
-### Automatic<a name="automatic"></a>
-
-The easiest way to install Zinit is to execute:
+A maneira mais fácil de instalar o Zinit é executar:
 
 ```bash
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
 ```
+ou acesse o repositório para instalação manual [GitHube zinit](https://github.com/zdharma-continuum/zinit)
 
-This will install Zinit in `~/.local/share/zinit/zinit.git`. `.zshrc` will be updated with three lines of code that will
-be added to the bottom. The lines will be sourcing `zinit.zsh` and setting up completion for command `zinit`.
-
-After installing and reloading the shell, compile Zinit via:
-
-```zsh
-zinit self-update
-```
-
-### Manual<a name="manual"></a>
-
-In your `.zshrc`, add the following snippet
-
-```zsh
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
-```
-
-[compinit](http://zsh.sourceforge.net/Doc/Release/Completion-System.html#Initialization)):
-
-If you source `zinit.zsh` after `compinit`, add the following snippet after sourcing `zinit.zsh`:
-
-```zsh
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-```
-
-Reload Zsh to install Zinit:
-
-```zsh
-exec zsh
-```
-
-Various paths can be customized; see section [Customizing Paths](#customizing-paths).
-
-added plugs in ~/.zshrc
-```zsh
-# Plugs zinit
-
-zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-autosuggestions
-zinit light zsh-users/zsh-completions
-```
-
-or
-
-### [GitHube zinit](https://github.com/zdharma-continuum/zinit)
-
-# 5° Script installation
+# instalação automática
 
 ```zsh
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/EversonDias/zsh-with-powerlevel10k-and-zinit/main/ubuntu-install.sh)"
