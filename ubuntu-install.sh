@@ -102,19 +102,6 @@ for font_url in "${font_urls[@]}"; do
   fi
 done
 
-# Install bat
-echo -e "\n#################################################"
-echo -e "\nInstalling bat...\n"
-echo -e "##################################################\n"
-sudo apt-get install bat -y
-
-# check install success
-if [ $? -eq 0 ]; then
-    echo -e "\nBat installation completed successfully!\n"
-else
-    echo -e "\nBat installation failed\n"
-fi
-
 # Install exa
 echo -e "\n#################################################"
 echo -e "\nInstalling exa...\n"
