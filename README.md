@@ -1,5 +1,7 @@
 # ZSH with Powerlevel10k and Zinit
 
+![shell](/readme/home.png)
+
 zsh shell install script with powerlevel10k and zinit.
 this script was made for debian and derivatives, for other systems I recommend making a clone and modifying the ubuntu-script accordingly.
 
