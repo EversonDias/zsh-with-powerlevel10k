@@ -4,7 +4,7 @@
 
 # index
 
-- [installation automatic](#instalação-automática)
+- [instalação automática](#instalação-automática)
 - [installation manual](#instalação-manual)
   - [ZSH](#1°-instalação-zsh)
   - [Powerlevel10k](#2°-instalação-powerlevel10k)
@@ -95,6 +95,8 @@ bash -c "$(curl --fail --show-error --silent --location https://raw.githubuserco
 ou acesse o repositório para instalação manual [GitHube zinit](https://github.com/zdharma-continuum/zinit)
 
 # instalação automática
+
+⚠️ Instalação para debian e derivados ⚠️
 
 ```zsh
 bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/EversonDias/zsh-with-powerlevel10k-and-zinit/main/ubuntu-install.sh)"
