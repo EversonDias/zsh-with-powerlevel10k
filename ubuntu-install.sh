@@ -102,6 +102,16 @@ for font_url in "${font_urls[@]}"; do
   fi
 done
 
+
+echo "# Alias shell-commands-rus" >> ~/.zshrc
+echo "alias py="python3"" >> ~/.zshrc
+echo 'alias pyvca="python3 -m venv .venv && source .venv/bin/activat"' >> ~/.zshrc
+echo 'alias pyva="source .venv/bin/activate"' >> ~/.zshrc
+echo 'alias pytest="python3 -m pytest"' ~/.zshrc
+echo 'gpush() {
+  git add . && git commit -m "$1" && git push
+}' >> ~/.zshrc
+
 # Install exa
 echo -e "\n#################################################"
 echo -e "\nInstalling exa...\n"
@@ -111,7 +121,6 @@ sudo apt-get install exa -y
 # check install success
 if [ $? -eq 0 ]; then
     echo -e "\nExa installation completed successfully!\n"
-    echo "# Alias shell-commands-rus" >> ~/.zshrc
     echo 'alias l="exa -l --icons"' >> ~/.zshrc
     echo "use L instead of LS"
 else
